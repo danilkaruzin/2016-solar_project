@@ -49,6 +49,7 @@ def parse_star_parameters(line, star):
     """
 
     data=line.split(' ')
+    star.type=data[0]
     star.r=int(data[1])
     star.color=data[2]
     star.mass=int(data[3])
@@ -76,6 +77,7 @@ def parse_planet_parameters(line, planet):
 
 
     data=line.split(' ')
+    planet.type = data[0]
     planet.r=int(data[1])
     planet.color=data[2]
     planet.mass=int(data[3])
@@ -96,14 +98,14 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     **output_filename** — имя входного файла
     **space_objects** — список объектов планет и звёзд
     """
-    f=open(output_filename, 'w')
+    out_file=open(output_filename, 'w')
     for obj in space_objects:
         if obj.type=="Star":
             print(out_file, "Star "+str(obj.r)+" "+obj.color+" "+str(obj.mass)+" "+str(obj.x)+" "+str(obj.y)+" "+str(obj.Vx)+" "+str(obj.Vy))
         elif obj.type=="Planet":
             print(out_file, "Planet " + str(obj.r) + " " + obj.color + " " + str(obj.mass) + " " + str(obj.x) + " " + str(
                 obj.y) + " " + str(obj.Vx) + " " + str(obj.Vy))
-
+    out_file.close()
 
 # FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
