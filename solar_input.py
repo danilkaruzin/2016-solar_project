@@ -50,8 +50,8 @@ def parse_star_parameters(line, star):
     star.mass=int(data[3])
     star.x=int(data[4])
     star.y=int(data[5])
-    star.vx=int(data[6])
-    star.vy=int(data[7])
+    star.Vx=int(data[6])
+    star.Vy=int(data[7])
     return star
 
 def parse_planet_parameters(line, planet):
@@ -77,8 +77,8 @@ def parse_planet_parameters(line, planet):
     planet.mass=int(data[3])
     planet.x=int(data[4])
     planet.y=int(data[5])
-    planet.vx=int(data[6])
-    planet.vy=int(data[7])
+    planet.Vx=int(data[6])
+    planet.Vy=int(data[7])
     return planet
 
 def write_space_objects_data_to_file(output_filename, space_objects):
@@ -92,10 +92,14 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     **output_filename** — имя входного файла
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w') as out_file:
-        for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME: should store real values
+    f=open(output_filename, 'w')
+    for obj in space_objects:
+        if obj.type=="Star":
+            print(out_file, "Star "+str(obj.r)+" "+obj.color+" "+str(obj.mass)+" "+str(obj.x)+" "+str(obj.y)+" "+str(obj.Vx)+" "+str(obj.Vy))
+        elif obj.type=="Planet":
+            print(out_file, "Planet " + str(obj.r) + " " + obj.color + " " + str(obj.mass) + " " + str(obj.x) + " " + str(
+                obj.y) + " " + str(obj.Vx) + " " + str(obj.Vy))
+
 
 # FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
