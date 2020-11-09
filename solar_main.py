@@ -73,24 +73,28 @@ def open_file_dialog():
     функцию считывания параметров системы небесных тел из данного файла.
     Считанные объекты сохраняются в глобальный список space_objects
     """
+    print("!!!!!!!!!!!!!!!!!!!!!!!!")
     global space_objects
     global perform_execution
     perform_execution = False
     for obj in space_objects:
         space.delete(obj.image)  # удаление старых изображений планет
+    print("!!!!!!!!!!!!!!!!!!!!!!!!")
     in_filename = askopenfilename(filetypes=(("Text file", ".txt"),))
+    print("!!!!!!!!!!!!!!!!!!!!!!!!")
     space_objects = read_space_objects_data_from_file(in_filename)
+    print("!!!!!!!!!!!!!!!!!!!!!!!!")
     max_distance = max([max(abs(obj.x), abs(obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
-
+    print("!!!!!!!!!!!!!!!!!!!!!!!!")
     for obj in space_objects:
-        if obj.type == 'star':
+        if obj.type == 'Star':
             create_star_image(space, obj)
-        elif obj.type == 'planet':
+        elif obj.type == 'Planet':
             create_planet_image(space, obj)
         else:
             raise AssertionError()
-
+    print("!!!!!!!!!!!!!!!!!!!!!!!!")
 
 def save_file_dialog():
     """Открывает диалоговое окно выбора имени файла и вызывает
