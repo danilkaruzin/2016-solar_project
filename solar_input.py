@@ -14,7 +14,6 @@ def read_space_objects_data_from_file(input_filename):
     """
 
     objects = []
-    print("!!!!!!!!!!!!!3425452435!!!!!!!!!")
     with open(input_filename) as input_file:
         for line in input_file:
             if len(line.strip()) == 0 or line[0] == '#':
@@ -102,9 +101,9 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     out_file=open(output_filename, 'w')
     for obj in space_objects:
         if obj.type=="Star":
-            print(out_file, "Star "+str(obj.r)+" "+obj.color+" "+str(obj.mass)+" "+str(obj.x)+" "+str(obj.y)+" "+str(obj.Vx)+" "+str(obj.Vy))
+            print(out_file, "Star "+str(obj.R)+" "+obj.color+" "+str(obj.m)+" "+str(obj.x)+" "+str(obj.y)+" "+str(obj.Vx)+" "+str(obj.Vy))
         elif obj.type=="Planet":
-            print(out_file, "Planet " + str(obj.r) + " " + obj.color + " " + str(obj.mass) + " " + str(obj.x) + " " + str(
+            print(out_file, "Planet " + str(obj.R) + " " + obj.color + " " + str(obj.m) + " " + str(obj.x) + " " + str(
                 obj.y) + " " + str(obj.Vx) + " " + str(obj.Vy))
     out_file.close()
 
